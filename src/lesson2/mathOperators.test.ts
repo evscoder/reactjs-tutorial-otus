@@ -7,6 +7,10 @@ import {
   sqr,
   sin,
   cos,
+  tan,
+  ctan,
+  rem,
+  factorial,
   fibonacci,
 } from "./mathOperators";
 
@@ -51,7 +55,23 @@ describe("mathOperators test cases", () => {
     expect(cos(0, 0)).toBe(1);
   });
 
+  it("tan 0 tg to equal 0", () => {
+    expect(tan(0, 0)).toBe(0);
+  });
+
+  it("ctg 0 ctg to equal Infinity", () => {
+    expect(ctan(0, 0)).toBe(Infinity);
+  });
+
   it("fibonacci 15 cos to equal 610", () => {
     expect(fibonacci(15, 0)).toBe(610);
+  });
+
+  it("factorial 4 ! to equal 24", () => {
+    expect(factorial(4, 0)).toBe(24);
+  });
+
+  it("rem 9 % 2 to equal 1", () => {
+    expect(rem(9, 2)).toBe(1);
   });
 });

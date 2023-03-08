@@ -46,7 +46,7 @@ export const tan: ScalarOperationType = (first: number): number => {
   return Math.tan(first);
 };
 
-export const ctg: ScalarOperationType = (first: number): number => {
+export const ctan: ScalarOperationType = (first: number): number => {
   return 1 / Math.tan(first);
 };
 
@@ -84,7 +84,7 @@ export const mathOperators: { [key: string]: ScalarOperationType } = {
   sin: sin,
   cos: cos,
   tg: tan,
-  ctg: ctg,
+  ctg: ctan,
   fib: fibonacci,
 };
 
