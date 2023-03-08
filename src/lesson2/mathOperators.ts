@@ -1,5 +1,4 @@
 export type ScalarOperationType = (first: number, second: number) => number;
-export type ScalarUnaryType = (first: number) => number;
 
 export const mul: ScalarOperationType = (
   first: number,
@@ -21,27 +20,49 @@ export const minus: ScalarOperationType = (
   second: number
 ): number => first - second;
 
-export const sin: ScalarUnaryType = Math.sin;
+export const pow: ScalarOperationType = (
+  first: number,
+  second: number
+): number => Math.pow(first, second);
 
-export const cos: ScalarUnaryType = Math.cos;
-
-export const tan: ScalarUnaryType = Math.tan;
-
-export const ctg: ScalarUnaryType = (x) => 1 / Math.tan(x);
-
-export const factorial: ScalarUnaryType = (x: number) => {
-  return x == 0 ? 1 : x * factorial(x - 1);
+export const sqr: ScalarOperationType = (first: number): number => {
+  return Math.pow(first, 2);
 };
 
-export const fibonacci: ScalarUnaryType = (x: number) => {
-  if (x < 1) {
+export const rem: ScalarOperationType = (
+  first: number,
+  second: number
+): number => first % second;
+
+export const sin: ScalarOperationType = (first: number): number => {
+  return Math.sin(first);
+};
+
+export const cos: ScalarOperationType = (first: number): number => {
+  return Math.cos(first);
+};
+
+export const tan: ScalarOperationType = (first: number): number => {
+  return Math.tan(first);
+};
+
+export const ctg: ScalarOperationType = (first: number): number => {
+  return 1 / Math.tan(first);
+};
+
+export const factorial: ScalarOperationType = (first: number): number => {
+  return first === 0 ? 1 : first * factorial(first - 1, 0);
+};
+
+export const fibonacci: ScalarOperationType = (first: number) => {
+  if (first < 1) {
     return 0;
   }
 
   let a = 0;
   let b = 1;
 
-  for (let i = 1; i < x; ++i) {
+  for (let i = 1; i < first; ++i) {
     const c = a + b;
 
     a = b;
@@ -56,6 +77,15 @@ export const mathOperators: { [key: string]: ScalarOperationType } = {
   "/": div,
   "+": add,
   "-": minus,
+  "^": pow,
+  "**": sqr,
+  "%": rem,
+  "!": factorial,
+  sin: sin,
+  cos: cos,
+  tg: tan,
+  ctg: ctg,
+  fib: fibonacci,
 };
 
 export const mathPriorities: number[] = [1, 2];
@@ -63,8 +93,17 @@ export const mathPriorities: number[] = [1, 2];
 const [FIRST, SECOND] = mathPriorities;
 
 export const mathOperatorsPriorities: { [key: string]: number } = {
+  "!": FIRST,
+  "**": FIRST,
+  "^": FIRST,
+  fib: FIRST,
+  sin: FIRST,
+  cos: FIRST,
+  tg: FIRST,
+  ctg: FIRST,
   "*": FIRST,
   "/": FIRST,
+  "%": FIRST,
   "+": SECOND,
   "-": SECOND,
 };

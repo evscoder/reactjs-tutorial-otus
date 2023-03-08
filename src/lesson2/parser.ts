@@ -22,6 +22,7 @@ export const parser = (line: string): ParsedLineType | null => {
     } else {
       throw new TypeError("Unexpected string");
     }
+
     return result;
   }, []);
 };
