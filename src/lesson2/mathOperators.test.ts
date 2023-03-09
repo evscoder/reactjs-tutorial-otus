@@ -39,36 +39,37 @@ describe("mathOperators test cases", () => {
     expect(minus(4, 2)).toBe(2);
   });
 
-  it("pow 4 ^ 4 to equal 256", () => {
-    expect(pow(4, 4)).toBe(256);
+  // My tests
+  it("pow 2 ^ 10 to equal 1024", () => {
+    expect(pow(2, 10)).toBe(1024);
   });
 
   it("sqr 4 ** to equal 16", () => {
-    expect(sqr(4, 2)).toBe(16);
+    expect(sqr(4)).toBe(16);
   });
 
-  it("sin 1 sin to equal 0.8414709848078965", () => {
-    expect(sin(1, 0)).toBe(0.8414709848078965);
+  it("sin(0) to equal 0", () => {
+    expect(sin(0)).toBe(0);
   });
 
-  it("cos 0 cos to equal 1", () => {
-    expect(cos(0, 0)).toBe(1);
+  it("cos(0) to equal 1", () => {
+    expect(cos(0)).toBe(1);
   });
 
-  it("tan 0 tg to equal 0", () => {
-    expect(tan(0, 0)).toBe(0);
+  it("tan(0) tn to equal 0", () => {
+    expect(tan(0)).toBe(0);
   });
 
-  it("ctg 0 ctg to equal Infinity", () => {
-    expect(ctan(0, 0)).toBe(Infinity);
+  it("ctg(0) to equal Infinity", () => {
+    expect(ctan(0)).toBe(Infinity);
   });
 
-  it("fibonacci 15 cos to equal 610", () => {
-    expect(fibonacci(15, 0)).toBe(610);
+  it("fib(4) to equal 3", () => {
+    expect(fibonacci(4)).toBe(3);
   });
 
   it("factorial 4 ! to equal 24", () => {
-    expect(factorial(4, 0)).toBe(24);
+    expect(factorial(4)).toBe(24);
   });
 
   it("rem 9 % 2 to equal 1", () => {
