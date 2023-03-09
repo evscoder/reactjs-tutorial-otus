@@ -29,7 +29,7 @@ export const startsWithFunction = (item: string): boolean => {
 
 export const itemNumber = (item: string): boolean => {
   return (
-    isBinary(item) ||
+    isUnary(item) ||
     isBracketClose(item) ||
     isNumber(item) ||
     startsWithFunction(item)

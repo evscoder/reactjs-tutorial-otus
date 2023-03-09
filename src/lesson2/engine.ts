@@ -14,7 +14,7 @@ export const firstPrioritiesCalc = (stack: ParsedLineType): ParsedLineType =>
     const prevItem = result[result.length - 2];
     const item = result[result.length - 1];
 
-    if (mathUnaryOperators[item]) {
+    if (mathUnaryOperators[nextItem]) {
       result = [
         ...result.slice(0, -1),
         mathUnaryOperators[nextItem](Number(item)),
