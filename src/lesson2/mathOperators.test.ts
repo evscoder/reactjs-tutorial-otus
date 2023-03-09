@@ -44,31 +44,31 @@ describe("mathOperators test cases", () => {
   });
 
   it("sqr 4 ** to equal 16", () => {
-    expect(sqr(4, 2)).toBe(16);
+    expect(sqr(4)).toBe(16);
   });
 
-  it("sin 1 sin to equal 0.8414709848078965", () => {
-    expect(sin(1, 0)).toBe(0.8414709848078965);
+  it("sin 0 to equal 0", () => {
+    expect(sin(0)).toBe(0);
   });
 
-  it("cos 0 cos to equal 1", () => {
-    expect(cos(0, 0)).toBe(1);
+  it("cos 0 to equal 1", () => {
+    expect(cos(0)).toBe(1);
   });
 
-  it("tan 0 tg to equal 0", () => {
-    expect(tan(0, 0)).toBe(0);
+  it("tan 0 to equal 0", () => {
+    expect(tan(0)).toBe(0);
   });
 
-  it("ctg 0 ctg to equal Infinity", () => {
-    expect(ctan(0, 0)).toBe(Infinity);
+  it("ctan 0 to equal Infinity", () => {
+    expect(ctan(0)).toBe(Infinity);
   });
 
-  it("fibonacci 15 cos to equal 610", () => {
-    expect(fibonacci(15, 0)).toBe(610);
+  it("fibonacci 15 to equal 610", () => {
+    expect(fibonacci(15)).toBe(610);
   });
 
   it("factorial 4 ! to equal 24", () => {
-    expect(factorial(4, 0)).toBe(24);
+    expect(factorial(4)).toBe(24);
   });
 
   it("rem 9 % 2 to equal 1", () => {
