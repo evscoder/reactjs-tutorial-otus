@@ -7,7 +7,7 @@ const rl = createInterface({
   output: process.stdout,
 });
 
-const question = (): Promise<null> =>
+const question = (): Promise<void> =>
   new Promise((resolve) => {
     rl.question("> ", (answer: string) => {
       const result = runner(answer);

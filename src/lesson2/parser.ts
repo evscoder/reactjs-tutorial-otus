@@ -17,18 +17,17 @@ export const parser = (line: string): ParsedLineType | null => {
   return stack.reduce<ParsedLineType>((result, item, key) => {
     const prevItem = stack[key - 1];
     const isValidNumberPush = itemOperator(prevItem) && isNumber(item);
-    const isValidBinaryOperatorPush = itemNumber(prevItem) && isBinary(item);
-    const isValidUnaryOperatorPush = itemNumber(prevItem) && isUnary(item);
+    const isValidItemPush =
+      (itemNumber(prevItem) && isBinary(item)) ||
+      (itemNumber(prevItem) && isUnary(item)) ||
+      (itemOperator(prevItem) && isBracketOpen(item)) ||
+      (itemNumber(prevItem) && isBracketClose(item));
     const isValidFunctionPush =
       itemOperator(prevItem) && startsWithFunction(item);
-    const isValidBracketOpenPush =
-      itemOperator(prevItem) && isBracketOpen(item);
-    const isValidBracketClosePush =
-      itemNumber(prevItem) && isBracketClose(item);
 
     if (isValidNumberPush) {
       result.push(Number(item));
-    } else if (isValidBinaryOperatorPush || isValidUnaryOperatorPush) {
+    } else if (isValidItemPush) {
       result.push(item);
     } else if (isValidFunctionPush) {
       const arr = item.split("(");
@@ -36,10 +35,6 @@ export const parser = (line: string): ParsedLineType | null => {
 
       result.push(Number(number));
       result.push(arr[0]);
-    } else if (isValidBracketOpenPush) {
-      result.push(item);
-    } else if (isValidBracketClosePush) {
-      result.push(item);
     } else {
       throw new TypeError("Unexpected string");
     }
