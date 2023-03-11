@@ -92,7 +92,7 @@ export const mathUnaryOperators: { [key: string]: UnaryOperationType } = {
   fib: fibonacci,
 };
 
-export const mathPriorities: number[] = [1, 2];
+export const mathPriorities = [1, 2] as const;
 
 const [FIRST, SECOND] = mathPriorities;
 
