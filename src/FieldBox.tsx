@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { Field } from "./Field";
+import styled from "@emotion/styled";
 
-export const Fieldbox = () => {
-  const [items] = useState([1, 2, 3, 4, 5]);
+export interface Props {
+  items: number[];
+  onClick: () => void;
+}
 
+const FieldBoxStyled = styled.div`
+  border: 1px solid;
+  width: 300px;
+  height: 300px;
+`;
+
+export const Fieldbox: FC<Props> = ({ items, onClick }) => {
   return (
-    <div style={{ border: "1px solid", height: "300px", width: "300px" }}>
-      {items.map((item, index) => (
+    <FieldBoxStyled onClick={onClick}>
+      {items.map((item: number, index) => (
         <Field number={index + 1} key={index + 1} />
       ))}
-    </div>
+    </FieldBoxStyled>
   );
 };

@@ -18,6 +18,7 @@ import { Fieldbox } from "@/FieldBox";
 
 export const App: React.FC<unknown> = () => {
   const [state, setState] = useState(store.getState());
+  const [fieldBoxItems] = useState<number[]>([1, 2, 3, 4, 5]);
 
   store.subscribe(() => setState(store.getState()));
 
@@ -25,7 +26,7 @@ export const App: React.FC<unknown> = () => {
 
   return (
     <>
-      <Fieldbox />
+      <Fieldbox items={fieldBoxItems} onClick={() => 1} />
       <Provider store={store}>
         <Router>
           <Header />
