@@ -5,7 +5,12 @@ import { ComponentWithState } from "components/WithState";
 type State = {
   count: number;
   changed: boolean;
-  obj: object;
+  obj?: {
+    test: string;
+    obj: {
+      test1: string;
+    };
+  };
 };
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -34,7 +39,7 @@ export class StateLifeCycle extends Component<Props, State> {
   componentDidUpdate(
     prevProps: Readonly<Props>,
     prevState: Readonly<State>,
-    snapshot?: any
+    snapshot?: unknown
   ) {
     if (prevState.count === 5) {
       return this.setCountIsOne();

@@ -21,32 +21,21 @@ export class ShowLifeCycle extends Component<
       test: false,
       error: null,
     };
-
-    this.changeState = this.changeState.bind(this);
-    this.resetError = this.resetError.bind(this);
   }
 
-  changeState() {
+  changeState = () => {
     this.setState((prevState) => ({ test: !prevState.test }));
-  }
+  };
 
-  resetError() {
+  resetError = () => {
     this.setState({ error: null });
-  }
+  };
 
   static getDerivedStateFromProps(
     props: ShowLifeCycleProps,
     state: ShowLifeCycleState
   ) {
     return null;
-  }
-
-  // Оптимизация
-  shouldComponentUpdate(
-    nextProps: ShowLifeCycleProps,
-    nextState: ShowLifeCycleState
-  ) {
-    return true;
   }
 
   getSnapshotBeforeUpdate(

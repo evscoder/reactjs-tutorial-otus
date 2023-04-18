@@ -41,11 +41,11 @@ export const App: React.FC<unknown> = () => {
               <li>
                 <Link to="/courses">Courses</Link>
               </li>
-              {!isAuthorized ? (
+              {!isAuthorized && (
                 <li>
                   <Link to="/signin">SignIn</Link>
                 </li>
-              ) : null}
+              )}
               <li>
                 <Link to="/ticktacktoe">TickTackToe</Link>
               </li>
