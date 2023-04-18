@@ -1,0 +1,18 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { action } from "@storybook/addon-actions";
+
+import { Field } from './Field';
+
+<Meta title="MDX/FieldItem" component={Field} />
+
+# Field Item
+
+`Field Item` component filled with "Number":
+
+<Canvas>
+  <Field
+    number={1}
+    onClick={() => {}}
+    key="jsx1"
+  >x</Field>
+</Canvas>
