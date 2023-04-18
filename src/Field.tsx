@@ -19,13 +19,15 @@ const FieldStyled = styled.button`
 `;
 
 export const Field: FC<FieldProps> = ({ number: number, onClick }) => {
-  const [isNum, setIsNum] = useState<string | number>("x");
+  const [fieldNum, setFieldNum] = useState<string | number>("x");
 
   const onGetNumber = () => {
-    return setIsNum(number);
+    return setFieldNum(number);
   };
 
   return (
-    <FieldStyled onClick={onClick ? onClick : onGetNumber}>{isNum}</FieldStyled>
+    <FieldStyled onClick={onClick ? onClick : onGetNumber}>
+      {fieldNum}
+    </FieldStyled>
   );
 };
