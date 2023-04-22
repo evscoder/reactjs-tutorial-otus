@@ -14,6 +14,9 @@ import { store } from "./store";
 import { selectIsAuthorized } from "@/modules/Login/selectors";
 
 import { result } from "@/modules/Flickr";
+import { LifeCycle } from "components/LifeCycle";
+import { UpdateLifeCycle } from "components/UpdateLifeCycle";
+import { StateLifeCycle } from "components/StateLifeCycle";
 
 export const App: React.FC<unknown> = () => {
   const [state, setState] = useState(store.getState());
@@ -23,47 +26,55 @@ export const App: React.FC<unknown> = () => {
   const isAuthorized = selectIsAuthorized(state);
 
   return (
-    <Provider store={store}>
-      <Router>
-        <Header />
-        <nav>
-          <ul>
-            <li>
-              <Link to="/courses">Courses</Link>
-            </li>
-            {!isAuthorized ? (
+    <>
+      <LifeCycle />
+      <hr />
+      <StateLifeCycle />
+      <hr />
+      <UpdateLifeCycle />
+      <hr />
+      <Provider store={store}>
+        <Router>
+          <Header />
+          <nav>
+            <ul>
               <li>
-                <Link to="/signin">SignIn</Link>
+                <Link to="/courses">Courses</Link>
               </li>
-            ) : null}
-            <li>
-              <Link to="/ticktacktoe">TickTackToe</Link>
-            </li>
-            <li>
-              <Link to="/flikr">Flickr app</Link>
-            </li>
-          </ul>
-        </nav>
-        <Switch>
-          <Route path="/courses">
-            <CoursesScreen />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/ticktacktoe">
-            <TicTacToeGame />
-          </Route>
-          <Route path="/flikr">
-            {() => {
-              result();
-            }}
-          </Route>
-          <Route path="*">
-            <Redirect to="/signin" />
-          </Route>
-        </Switch>
-      </Router>
-    </Provider>
+              {!isAuthorized && (
+                <li>
+                  <Link to="/signin">SignIn</Link>
+                </li>
+              )}
+              <li>
+                <Link to="/ticktacktoe">TickTackToe</Link>
+              </li>
+              <li>
+                <Link to="/flikr">Flickr app</Link>
+              </li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route path="/courses">
+              <CoursesScreen />
+            </Route>
+            <Route path="/signin">
+              <SignIn />
+            </Route>
+            <Route path="/ticktacktoe">
+              <TicTacToeGame />
+            </Route>
+            <Route path="/flikr">
+              {() => {
+                result();
+              }}
+            </Route>
+            <Route path="*">
+              <Redirect to="/signin" />
+            </Route>
+          </Switch>
+        </Router>
+      </Provider>
+    </>
   );
 };
